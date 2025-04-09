@@ -1,0 +1,145 @@
+.profile-container {
+  background-color: wheat;
+  max-width: 700px;
+  margin: 50px auto;
+  padding: 30px 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #2d2d2d;
+  animation: slideIn 1s ease forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.profile-container h2 {
+  font-size: 32px;
+  margin-bottom: 5px;
+  color: #333;
+  font-family: sans-serif;
+  transition: color 0.3s ease;
+}
+
+.profile-container h2:hover {
+  color: #e67e22;
+  cursor: pointer;
+}
+
+.username {
+  color: #666;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.bio {
+  font-style: italic;
+  color: #444;
+  margin-bottom: 15px;
+  font-size: 15px;
+}
+
+.profile-container p {
+  margin: 6px 0;
+  font-size: 15px;
+}
+
+.profile-container a {
+  color: #0073e6;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.profile-container a:hover {
+  text-decoration: underline;
+  color: #005bb5;
+}
+
+hr {
+  margin: 25px 0;
+  border: none;
+  height: 1px;
+  background: #ddd;
+}
+
+.post {
+  background-color: #fff8e1;
+  padding: 18px;
+  margin-bottom: 16px;
+  border-left: 6px solid #ffb300;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.07);
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.5s ease both;
+}
+
+.post:hover {
+  transform: translateY(-5px);
+  border-left-color: #ffa000;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.post p {
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.post small {
+  font-size: 13px;
+  color: #555;
+}
+
+button {
+  margin-top: 10px;
+  padding: 12px 24px;
+  background: linear-gradient(to right, #ff8c00, #ffae42);
+  border: none;
+  margin: 0px 5px;
+  border-radius: 30px;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(255, 140, 0, 0.4);
+  transition: all 0.4s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(255, 140, 0, 0.5);
+  background: linear-gradient(to right, #ffa726, #ffca28);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width:480px){
+   .profile-container h2,h3 {
+    font-size: 14px;
+    font-family: sans-serif;
+      }
+  .profile-container p{
+    font-size: 12px;
+  }
+  .profile-container button{
+    font-size: 10px;
+  }
+  .post{
+    width: 70%;
+  }
+}
