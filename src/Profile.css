@@ -22,6 +22,7 @@
 .profile-container h2 {
   font-size: 32px;
   margin-bottom: 5px;
+  margin-top:5px ;
   color: #333;
   font-family: sans-serif;
   transition: color 0.3s ease;
@@ -132,6 +133,7 @@ button:hover {
    .profile-container h2,h3 {
     font-size: 14px;
     font-family: sans-serif;
+    margin-top: 5px;
       }
   .profile-container p{
     font-size: 12px;

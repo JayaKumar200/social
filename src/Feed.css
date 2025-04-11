@@ -81,6 +81,8 @@
   color: darkblue;
 }
 
+
+
 .project h6 {
   font-size: 0.9rem;
   color: #888;
@@ -102,6 +104,7 @@
   background-color: #1e1e1e;
   padding: 1.5rem;
   border-radius: 12px;
+
   width: 300px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   transition: transform 0.3s ease;
@@ -128,9 +131,11 @@
 
 .image-content p {
   font-size: 1rem;
+
   margin-bottom: 0.5rem;
   color: #ddd;
 }
+
 
 .image-content span {
   font-weight: bold;
@@ -192,4 +197,18 @@ h1{
     opacity: 1;
     transform: translateY(0px);
   }
+}
+
+@media (max-width:480px){
+
+  .text{
+    font-size: 10px;
+  }
+  .reaction button{
+    font-size: 6px;
+    margin-top: 15px;
+    padding: 5px 6px;
+
+  }
+
 }

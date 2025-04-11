@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState,useEffect } from 'react';
 import './Feed.css';
 import ui1 from './assets/ui1.jpg'
 import ui2 from './assets/ui2.jpg'
@@ -7,10 +7,11 @@ import ui5 from './assets/ui5.jpg'
 import {setLike} from './slice/LikeSlice.jsx';
 import {setCommand} from './slice/Command.jsx';
 import {setPost} from './slice/PostSlice.jsx';
-
+import {setIncrease,setDescrease} from './slice/PostCount.jsx';
 import{useDispatch,useSelector} from 'react-redux';
 const Feed = () => {
 
+  const [localStore,setLocalStore] = useState([]);
   const [comment,setComment]=useState(null)
   const dispatch = useDispatch();
   const selector = useSelector((state)=>state.like); 
@@ -20,7 +21,29 @@ console.log(commandSelector);
 
   const [commandInput, setCommandInput] = useState(""); 
 
-   const postSelector = useSelector((state)=> state.post)
+   const postSelector = useSelector((state)=> state.post);
+
+   //postcount
+
+   const countDispatch = useDispatch();
+
+  // const postCount = useSelector((state)=> state.postcount.count);
+
+
+   useEffect(() => {
+    if(postSelector.length>0){
+       localStorage.setItem('localStore',JSON.stringify(postSelector))
+       countDispatch(setIncrease());
+    }
+   }, [postSelector]);
+
+   useEffect(()=>{
+     const postData = localStorage.getItem('localStore')
+
+     if(postData){
+         setLocalStore(JSON.parse(postData))
+     }
+   },[])
 
 
   const handleCommand =()=>{
@@ -29,6 +52,13 @@ console.log(commandSelector);
     setCommandInput('')
   
   }
+
+  const handleDelete = (postIndex) => {
+  const updatedStore = localStore.filter((_, index) => index !== postIndex);
+  setLocalStore(updatedStore);
+  countDispatch(setDescrease())
+  localStorage.setItem('localStore', JSON.stringify(updatedStore));
+};
 
 
 
@@ -251,7 +281,7 @@ const jobpost = [
       </div>
 
       <div className='image'>
-        {jobpost.map((job,index)=> (
+           {jobpost.map((job,index)=> (
            <div className='project' key={index}>
 
            <span>UserName</span>
@@ -282,11 +312,14 @@ const jobpost = [
            </div>
 
           ))}
+             
 
            <div className='image'> 
-           {postSelector.map((post,index)=>(
-            <div className='image-content' key={index}>
+           
+           {localStore.map((post,index)=>(
 
+            <div className='image-content' key={index}>
+                
               <span>Content</span>
               <p>{post.content}</p>
               <span>Image</span>
@@ -302,13 +335,16 @@ const jobpost = [
               <span className='text' onClick={() => 
 
               setComment(index)}>Comment 💬</span>
+
+              <button onClick={()=> handleDelete(index)}>Delete</button>
+
             </div>
 
            {comment === index && (
           <div className='comment-box'>
             <input className='comment' placeholder='Post the comment!' value={commandInput} onChange={(e)=> setCommandInput(e.target.value)} />
             <button className='save' onClick={handleCommand}>Save</button>
-          </div>
+                      </div>
         )}
 
             </div>

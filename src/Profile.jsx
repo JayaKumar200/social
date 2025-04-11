@@ -3,10 +3,15 @@ import './Profile.css'
 import {setFollow,setDisconnect} from './slice/FollowSlice.jsx';
 import {useDispatch,useSelector} from 'react-redux';
 
+
 const Profile = () => {
 
      const dispatch = useDispatch()
      const selector = useSelector((state)=> state.follow.follower)
+
+     //countPost
+
+     const postSelector = useSelector((state)=> state.postcount.count);
 	const profile = {
 		  name: "Jayakumar",
 		  username: "@jaya_dev",
@@ -48,6 +53,7 @@ const Profile = () => {
 		  <p>👥 {selector} Followers • {profile.following} Following</p>
 		  <button onClick={()=> dispatch(setFollow())}>Connect!</button> 
 		  <button onClick={()=> dispatch(setDisconnect())}>DisConnect</button>
+		  <h2> Create Posts :{postSelector}</h2>
 		  <hr />
 		  <h3>Recent Posts</h3>
 		  {profile.posts.map((post, index) => (
